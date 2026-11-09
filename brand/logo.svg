@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Honeycomb hexagon -->
+  <path d="M64 6 L114 35 Q118 37.5 118 42 L118 86 Q118 90.5 114 93 L64 122 Q60 124 56 122 L14 93 Q10 90.5 10 86 L10 42 Q10 37.5 14 35 L56 6 Q60 4 64 6 Z" fill="#F5B301" transform="translate(4 0)"/>
+  <!-- Speech bubble -->
+  <path d="M34 38 h60 a10 10 0 0 1 10 10 v26 a10 10 0 0 1 -10 10 h-30 l-14 12 v-12 h-16 a10 10 0 0 1 -10 -10 v-26 a10 10 0 0 1 10 -10 z" fill="#FFFFFF"/>
+  <!-- Bee stripes inside bubble -->
+  <rect x="44" y="50" width="40" height="8" rx="4" fill="#1D1A14"/>
+  <rect x="44" y="64" width="26" height="8" rx="4" fill="#1D1A14"/>
+</svg>

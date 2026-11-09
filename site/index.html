@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Babelbee — Reply to buyers in any language, in seconds</title>
+<meta name="description" content="Free browser extension for Etsy, eBay & Vinted sellers. Understand any buyer message and send a perfect reply in their language. No API key.">
+<meta property="og:title" content="Babelbee — Every buyer, every language. Answered in seconds.">
+<meta property="og:description" content="Translate buyer messages and draft replies in their language, using your shop's real policies. No API key. Private.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<meta property="og:image" content="og.png">
+<style>
+  :root {
+    --bg: #fffdf7; --surface: #ffffff; --ink: #1d1a14; --muted: #6b6455;
+    --line: #ece5d3; --honey: #f5b301; --honey-ink: #5a4100; --honey-soft: #fff4d1;
+    --radius: 16px; --max: 1080px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #15130f; --surface: #1e1b16; --ink: #f5f0e4; --muted: #a9a08c;
+      --line: #2f2a21; --honey: #ffc53d; --honey-ink: #1d1500; --honey-soft: #2b2416; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: inherit; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+  .logo { font-weight: 800; font-size: 1.25rem; text-decoration: none; }
+  select { background: var(--surface); color: var(--ink); border: 1px solid var(--line);
+    border-radius: 999px; padding: 6px 12px; font: inherit; font-size: .9rem; }
+  .btn { display: inline-block; background: var(--honey); color: var(--honey-ink); font-weight: 700;
+    text-decoration: none; padding: 14px 26px; border-radius: 999px; transition: transform .15s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .hero { padding: 48px 0 32px; text-align: center; }
+  .eyebrow { display: inline-block; background: var(--honey-soft); color: var(--ink);
+    padding: 6px 14px; border-radius: 999px; font-size: .85rem; font-weight: 600; }
+  h1 { font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1.1; margin: 18px auto 16px; max-width: 16ch; letter-spacing: -.02em; }
+  .lead { color: var(--muted); font-size: 1.15rem; max-width: 60ch; margin: 0 auto 28px; }
+  .small { color: var(--muted); font-size: .85rem; margin-top: 12px; }
+  .demo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 40px 0 0; text-align: left; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+  .card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+  .bubble { font-size: .95rem; }
+  .bubble .tag { font-size: .75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; display: block; margin-bottom: 6px; }
+  .bubble .back { display: block; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line); color: var(--muted); font-size: .85rem; }
+  section { padding: 56px 0; }
+  h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.2; margin: 0 0 24px; letter-spacing: -.01em; }
+  .center { text-align: center; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .steps .num { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+    background: var(--honey); color: var(--honey-ink); font-weight: 800; margin-bottom: 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .chip { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; font-size: .95rem; }
+  .price { display: flex; flex-direction: column; }
+  .price .amount { font-size: 2rem; font-weight: 800; margin: 6px 0; }
+  .price ul { padding-left: 18px; color: var(--muted); flex: 1; }
+  .price.featured { border: 2px solid var(--honey); }
+  .price .btn { text-align: center; margin-top: 8px; }
+  details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; }
+  summary { font-weight: 600; cursor: pointer; }
+  details p { color: var(--muted); margin: 10px 0 0; }
+  .final { background: var(--honey-soft); border-radius: 24px; padding: 48px 20px; text-align: center; }
+  footer { color: var(--muted); font-size: .85rem; padding: 32px 0 48px; text-align: center; }
+  @media (max-width: 760px) { .demo, .grid3 { grid-template-columns: 1fr; } section { padding: 40px 0; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="#"><img src="logo.svg" alt="" width="30" height="30" style="vertical-align:-7px;margin-right:6px">Babelbee</a>
+    <select id="lang" aria-label="Language">
+      <option value="en">English</option><option value="pt">Português</option><option value="es">Español</option>
+      <option value="fr">Français</option><option value="de">Deutsch</option><option value="it">Italiano</option><option value="pl">Polski</option>
+    </select>
+  </header>
+
+  <div class="hero">
+    <span class="eyebrow">For Etsy, eBay, Vinted &amp; Depop sellers</span>
+    <h1 id="h-title">Every buyer, every language. Answered in seconds.</h1>
+    <p class="lead" id="h-lead">Babelbee reads your buyer's message, translates it for you, and writes a friendly reply in <em>their</em> language — using your shop's real policies. You check it, you click send.</p>
+    <a class="btn waitlist" href="#" id="h-cta">Join the waitlist — it's free</a>
+    <p class="small">Lifetime deal for the first 50 sellers · No API key · Your messages never leave your browser</p>
+
+    <div class="demo">
+      <div class="card bubble"><span class="tag">🇩🇪 Buyer writes</span>„Hallo! Wann kommt meine Bestellung an? Ich brauche sie bis Samstag für ein Geschenk.“</div>
+      <div class="card bubble"><span class="tag">🇵🇹 You read</span>“Olá! Quando chega a minha encomenda? Preciso dela até sábado para um presente.”</div>
+      <div class="card bubble"><span class="tag">🇩🇪 Babelbee replies</span>„Hallo! Danke für deine Nachricht 😊 Deine Bestellung wurde heute verschickt und kommt in 2–3 Werktagen an – also rechtzeitig vor Samstag.“<span class="back">🇵🇹 “Olá! Obrigado pela mensagem 😊 A sua encomenda foi enviada hoje e chega em 2–3 dias úteis — a tempo de sábado.”</span></div>
+    </div>
+  </div>
+
+  <section>
+    <h2 class="center">Buyers don't wait. And they don't all speak your language.</h2>
+    <div class="grid3">
+      <div class="card"><h3>🕐 Slow replies lose sales</h3><p>Etsy reports that sellers who answer within two days see, on average, 27% higher conversion.</p></div>
+      <div class="card"><h3>🌍 International buyers</h3><p>They're a huge part of the opportunity — and the hardest messages to answer well.</p></div>
+      <div class="card"><h3>🔁 Same answers, all day</h3><p>"Where's my order?" "Can you personalize this?" "Do you ship to Canada?"</p></div>
+    </div>
+  </section>
+
+  <section class="steps">
+    <h2 class="center">How it works</h2>
+    <div class="grid3">
+      <div class="card"><span class="num">1</span><h3>Select the message</h3><p>On Etsy, eBay, Vinted, Depop, Gmail… any site.</p></div>
+      <div class="card"><span class="num">2</span><h3>Right-click → "Reply with Babelbee"</h3><p>See the translation and a ready reply in the buyer's language.</p></div>
+      <div class="card"><span class="num">3</span><h3>Check and send</h3><p>The back-translation shows exactly what you're saying. Babelbee never sends anything on its own.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="center">Built for busy sellers</h2>
+    <div class="grid3">
+      <div class="card"><h3>🗣️ Speaks your buyer's language</h3><p>Replies in all major languages, with a back-translation so you always know what you send.</p></div>
+      <div class="card"><h3>🏪 Knows your shop</h3><p>Add processing times, shipping and returns once. Babelbee never invents promises you didn't make.</p></div>
+      <div class="card"><h3>🔑 No API key, no setup</h3><p>Runs on the AI built into your browser. No OpenAI account, no usage bills.</p></div>
+      <div class="card"><h3>🔒 Private by design</h3><p>Conversations stay in your browser. No servers, no tracking, no data selling.</p></div>
+      <div class="card"><h3>🛡️ No risky automation</h3><p>No bots, no auto-sending, no auto-offers. Just faster writing — you stay in control.</p></div>
+      <div class="card"><h3>🧩 Every marketplace</h3><p>Etsy, eBay, Vinted, Depop, Amazon, Shopify inbox, email. One tool everywhere you sell.</p></div>
+    </div>
+  </section>
+
+  <section class="center">
+    <h2>Ready for the messages you get every day</h2>
+    <div class="chips">
+      <span class="chip">Where is my order?</span><span class="chip">Shipping delay</span><span class="chip">Custom order</span>
+      <span class="chip">Return or refund</span><span class="chip">Item arrived damaged</span><span class="chip">Is this still available?</span>
+      <span class="chip">Price offers</span><span class="chip">Thank you + review request</span>
+    </div>
+    <p class="small">Edit them or create your own.</p>
+  </section>
+
+  <section id="pricing">
+    <h2 class="center">Simple pricing</h2>
+    <div class="grid3">
+      <div class="card price"><h3>Free</h3><div class="amount">$0</div>
+        <ul><li>15 replies / month</li><li>All languages</li><li>3 custom templates</li><li>All marketplaces</li></ul>
+        <a class="btn ghost waitlist" href="#">Join waitlist</a></div>
+      <div class="card price"><h3>Pro</h3><div class="amount">$9<small>/mo</small></div>
+        <ul><li>Unlimited replies</li><li>Unlimited templates</li><li>Multiple shops</li><li>or $79/year</li></ul>
+        <a class="btn ghost waitlist" href="#">Join waitlist</a></div>
+      <div class="card price featured"><h3>Lifetime · launch</h3><div class="amount">$49 <small>once</small></div>
+        <ul><li>Everything in Pro, forever</li><li>First 50 sellers only</li><li>Shape the roadmap</li></ul>
+        <a class="btn waitlist" href="#">Claim lifetime deal</a></div>
+    </div>
+    <p class="small center">Prices in USD. Taxes handled by our payment partner. Cancel anytime.</p>
+  </section>
+
+  <section>
+    <h2 class="center">Questions</h2>
+    <details><summary>Is it really free?</summary><p>Yes. The free plan gives you 15 replies every month, forever. Upgrade only if you need more.</p></details>
+    <details><summary>Do I need an OpenAI or Gemini account?</summary><p>No. Babelbee uses the AI built into recent browsers. If your computer doesn't support it, you can optionally paste a free Google AI key — we show you how in one minute.</p></details>
+    <details><summary>Will this get my shop banned?</summary><p>Babelbee doesn't automate anything: it never clicks, sends, follows or relists. It only writes text that you review and send yourself.</p></details>
+    <details><summary>Which browsers?</summary><p>Microsoft Edge and Google Chrome on desktop. Firefox is on the roadmap.</p></details>
+    <details><summary>Does it work alongside Etsy's own AI assistant?</summary><p>Yes. Etsy's assistant only works inside Etsy. Babelbee works on every marketplace and in every language.</p></details>
+    <details><summary>Where is my data stored?</summary><p>In your browser. Your shop profile and templates are saved locally. Messages are processed on your device, or sent directly to Google only if you choose to use your own key.</p></details>
+    <details><summary>Is Babelbee affiliated with Etsy, eBay or Vinted?</summary><p>No. Babelbee is an independent tool. All trademarks belong to their owners.</p></details>
+  </section>
+
+  <section>
+    <div class="final">
+      <h2>Answer the world. Keep your weekends.</h2>
+      <p class="lead">Be first to try Babelbee — and lock in the $49 lifetime deal.</p>
+      <a class="btn waitlist" href="#">Join the waitlist</a>
+    </div>
+  </section>
+
+  <footer>
+    🐝 Babelbee · <a href="privacy.html">Privacy</a> · <a id="contact" href="#">Contact</a><br>
+    Not affiliated with Etsy, eBay, Vinted or Depop.
+  </footer>
+</div>
+
+<script>
+  // Fill these in before deploying.
+  const WAITLIST_URL = "https://tally.so/r/REPLACE_ME";
+  const CONTACT_EMAIL = "babelbee.hello@gmail.com";
+
+  document.querySelectorAll(".waitlist").forEach(a => { a.href = WAITLIST_URL; a.target = "_blank"; a.rel = "noopener"; });
+  document.getElementById("contact").href = "mailto:" + CONTACT_EMAIL;
+
+  const HERO = {
+    en: ["Every buyer, every language. Answered in seconds.", "Babelbee reads your buyer's message, translates it for you, and writes a friendly reply in <em>their</em> language — using your shop's real policies. You check it, you click send.", "Join the waitlist — it's free"],
+    pt: ["Cada comprador, cada língua. Respondido em segundos.", "O Babelbee lê a mensagem do comprador, traduz para si e escreve uma resposta simpática na língua <em>dele</em> — com as políticas reais da sua loja. Você revê e envia.", "Entrar na lista de espera — grátis"],
+    es: ["Cada comprador, cada idioma. Respondido en segundos.", "Babelbee lee el mensaje de tu comprador, te lo traduce y escribe una respuesta amable en <em>su</em> idioma, con las políticas reales de tu tienda. Tú revisas y envías.", "Únete a la lista de espera — gratis"],
+    fr: ["Chaque acheteur, chaque langue. Une réponse en quelques secondes.", "Babelbee lit le message de votre acheteur, le traduit pour vous et rédige une réponse chaleureuse dans <em>sa</em> langue, avec les vraies conditions de votre boutique. Vous vérifiez, vous envoyez.", "Rejoindre la liste d'attente — gratuit"],
+    de: ["Jeder Käufer, jede Sprache. In Sekunden beantwortet.", "Babelbee liest die Nachricht deines Käufers, übersetzt sie für dich und schreibt eine freundliche Antwort in <em>seiner</em> Sprache – mit den echten Richtlinien deines Shops. Du prüfst, du sendest.", "Auf die Warteliste – kostenlos"],
+    it: ["Ogni acquirente, ogni lingua. Risposto in pochi secondi.", "Babelbee legge il messaggio dell'acquirente, lo traduce per te e scrive una risposta cordiale nella <em>sua</em> lingua, con le vere politiche del tuo negozio. Tu controlli, tu invii.", "Entra in lista d'attesa — gratis"],
+    pl: ["Każdy kupujący, każdy język. Odpowiedź w kilka sekund.", "Babelbee czyta wiadomość kupującego, tłumaczy ją dla Ciebie i pisze uprzejmą odpowiedź w <em>jego</em> języku — zgodnie z zasadami Twojego sklepu. Ty sprawdzasz, Ty wysyłasz.", "Dołącz do listy oczekujących — za darmo"]
+  };
+  const sel = document.getElementById("lang");
+  function setLang(l) {
+    const t = HERO[l] || HERO.en;
+    document.getElementById("h-title").textContent = t[0];
+    document.getElementById("h-lead").innerHTML = t[1];
+    document.getElementById("h-cta").textContent = t[2];
+    document.documentElement.lang = l;
+    sel.value = l;
+  }
+  sel.addEventListener("change", e => setLang(e.target.value));
+  const guess = (navigator.language || "en").slice(0, 2);
+  if (HERO[guess]) setLang(guess);
+</script>
+</body>
+</html>

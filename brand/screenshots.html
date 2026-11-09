@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Babelbee store screenshots</title>
+<style>
+  :root { --honey:#F5B301; --honey-soft:#FFF4D1; --ink:#1D1A14; --muted:#6B6455; --line:#ECE5D3; --bg:#FFFDF7; --blue:#2F6FEB; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:var(--ink); }
+  .shot { width:1280px; height:800px; background:linear-gradient(135deg,#FFF4D1 0%,#FFFDF7 55%); position:relative; overflow:hidden; display:none; }
+  .shot.on { display:block; }
+  .cap { position:absolute; left:64px; top:56px; width:420px; }
+  .cap .logo { display:flex; align-items:center; gap:10px; font-weight:800; font-size:22px; margin-bottom:28px; }
+  .cap .logo img { width:36px; height:36px; }
+  .cap h1 { font-size:46px; line-height:1.08; margin:0 0 18px; letter-spacing:-.02em; }
+  .cap p { font-size:19px; color:var(--muted); margin:0; }
+  .browser { position:absolute; right:48px; top:56px; width:700px; height:690px; background:#fff; border-radius:14px;
+    box-shadow:0 30px 80px rgba(60,40,0,.18), 0 0 0 1px var(--line); overflow:hidden; }
+  .bar { height:44px; background:#F3F0E8; display:flex; align-items:center; gap:8px; padding:0 14px; border-bottom:1px solid var(--line); }
+  .dot { width:11px; height:11px; border-radius:50%; background:#E0D9C6; }
+  .url { margin-left:14px; flex:1; height:26px; border-radius:13px; background:#fff; color:var(--muted); font-size:13px; display:flex; align-items:center; padding:0 14px; }
+  .page { display:flex; height:calc(100% - 44px); }
+  .inbox { flex:1; padding:22px; background:#FAFAF8; }
+  .inbox h4 { margin:0 0 14px; font-size:15px; color:var(--muted); font-weight:600; }
+  .msg { background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:12px; font-size:14px; }
+  .msg .who { font-weight:700; font-size:13px; margin-bottom:4px; }
+  .msg.sel span.hl { background:#BBD3FF; }
+  .replybox { border:1px solid var(--line); border-radius:12px; background:#fff; height:110px; padding:12px; color:#B0A890; font-size:14px; }
+  .panel { width:330px; border-left:1px solid var(--line); background:#fff; padding:18px; display:flex; flex-direction:column; gap:12px; }
+  .ph { display:flex; align-items:center; gap:8px; font-weight:800; }
+  .ph img { width:24px; height:24px; }
+  .lbl { font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+  .box { border:1px solid var(--line); border-radius:10px; padding:10px 12px; font-size:13.5px; }
+  .box.out { border:2px solid var(--honey); }
+  .back { font-size:12.5px; color:var(--muted); border-top:1px dashed var(--line); margin-top:8px; padding-top:8px; }
+  .row { display:flex; gap:8px; }
+  .pill { font-size:12px; border:1px solid var(--line); border-radius:999px; padding:4px 10px; }
+  .pill.on { background:var(--honey-soft); border-color:var(--honey); font-weight:600; }
+  .btn { background:var(--honey); color:#3A2A00; font-weight:700; border-radius:999px; text-align:center; padding:10px; font-size:14px; }
+  .btn.ghost { background:#fff; border:1px solid var(--line); color:var(--ink); }
+  .ctx { position:absolute; left:250px; top:205px; width:260px; background:#fff; border-radius:8px; box-shadow:0 10px 30px rgba(0,0,0,.18); border:1px solid #ddd; padding:6px 0; font-size:14px; }
+  .ctx div { padding:7px 16px; }
+  .ctx .sep { height:1px; padding:0; background:#eee; margin:4px 0; }
+  .ctx .hi { background:#FFF4D1; font-weight:700; display:flex; gap:8px; align-items:center; }
+  .ctx .hi img { width:18px; height:18px; }
+  .opts { padding:28px 34px; }
+  .opts h2 { margin:0 0 4px; font-size:22px; }
+  .opts .sub { color:var(--muted); font-size:14px; margin-bottom:20px; }
+  .field { margin-bottom:14px; }
+  .field .in { border:1px solid var(--line); border-radius:8px; padding:9px 12px; font-size:14px; background:#FFFDF7; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .tpl { display:flex; justify-content:space-between; align-items:center; border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin-bottom:10px; font-size:14.5px; }
+  .tpl small { color:var(--muted); display:block; font-size:12.5px; }
+  .tpl .ed { font-size:12px; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:3px 10px; }
+  .feat { position:absolute; right:64px; top:110px; width:640px; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .f { background:#fff; border:1px solid var(--line); border-radius:18px; padding:26px; box-shadow:0 12px 40px rgba(60,40,0,.08); }
+  .f .ic { font-size:36px; }
+  .f h3 { margin:10px 0 6px; font-size:21px; }
+  .f p { margin:0; color:var(--muted); font-size:15px; }
+</style>
+</head>
+<body>
+
+<!-- 1: Hero -->
+<div class="shot" id="s1">
+  <div class="cap">
+    <div class="logo"><img src="logo.svg" alt="">Babelbee</div>
+    <h1>Any language in. Perfect reply out.</h1>
+    <p>Understand every buyer and answer in their language, with your shop's real policies. You check it and send it.</p>
+  </div>
+  <div class="browser">
+    <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">yourshop.example/messages</span></div>
+    <div class="page">
+      <div class="inbox">
+        <h4>Conversation with Lena M.</h4>
+        <div class="msg sel"><div class="who">Lena M. · Berlin</div><span class="hl">Hallo! Wann kommt meine Bestellung an? Ich brauche sie bis Samstag für ein Geschenk.</span></div>
+        <div class="replybox">Write a reply…</div>
+      </div>
+      <div class="panel">
+        <div class="ph"><img src="logo.svg" alt="">Babelbee</div>
+        <div><div class="lbl">🇩🇪 → 🇵🇹 Buyer says</div><div class="box">“Olá! Quando chega a minha encomenda? Preciso dela até sábado para um presente.”</div></div>
+        <div class="row"><span class="pill on">Friendly</span><span class="pill">Professional</span><span class="pill">Short</span></div>
+        <div><div class="lbl">🇩🇪 Reply</div><div class="box out">Hallo Lena! Danke für deine Nachricht 😊 Deine Bestellung wurde heute verschickt und kommt in 2–3 Werktagen an, also rechtzeitig vor Samstag.<div class="back">🇵🇹 “Olá Lena! Obrigado pela mensagem 😊 A sua encomenda foi enviada hoje e chega em 2–3 dias úteis, a tempo de sábado.”</div></div></div>
+        <div class="row"><div class="btn" style="flex:1">Insert reply</div><div class="btn ghost" style="flex:1">Copy</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2: Context menu -->
+<div class="shot" id="s2">
+  <div class="cap">
+    <div class="logo"><img src="logo.svg" alt="">Babelbee</div>
+    <h1>Right-click on any marketplace.</h1>
+    <p>Select a buyer's message on any site, from marketplaces to your email, and choose "Reply with Babelbee".</p>
+  </div>
+  <div class="browser">
+    <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">marketplace.example/inbox</span></div>
+    <div class="page">
+      <div class="inbox">
+        <h4>Messages</h4>
+        <div class="msg"><div class="who">Giulia R. · Milano</div>Ciao! È ancora disponibile? Accetteresti 25€?</div>
+        <div class="msg sel"><div class="who">Pierre D. · Lyon</div><span class="hl">Bonjour, le colis est arrivé mais le vase est cassé. Que puis-je faire ?</span></div>
+        <div class="msg"><div class="who">Sam K. · Toronto</div>Do you ship to Canada? How long does it take?</div>
+      </div>
+    </div>
+    <div class="ctx">
+      <div>Copy</div><div>Search the web for "Bonjour, le colis…"</div><div class="sep"></div>
+      <div class="hi"><img src="logo.svg" alt="">Reply with Babelbee</div>
+      <div class="sep"></div><div>Inspect</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3: Shop profile -->
+<div class="shot" id="s3">
+  <div class="cap">
+    <div class="logo"><img src="logo.svg" alt="">Babelbee</div>
+    <h1>Knows your shop policies.</h1>
+    <p>Add your processing times, shipping and returns once. Babelbee never promises what you didn't.</p>
+  </div>
+  <div class="browser">
+    <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">Babelbee · Settings</span></div>
+    <div class="opts">
+      <h2>Shop profile</h2><div class="sub">Babelbee uses these facts in every reply.</div>
+      <div class="grid2">
+        <div class="field"><div class="lbl">Shop name</div><div class="in">Little Clay Studio</div></div>
+        <div class="field"><div class="lbl">Sign replies as</div><div class="in">Ana</div></div>
+        <div class="field"><div class="lbl">Processing time</div><div class="in">1–3 business days</div></div>
+        <div class="field"><div class="lbl">Your language</div><div class="in">Português</div></div>
+        <div class="field"><div class="lbl">Shipping · Europe</div><div class="in">3–5 business days</div></div>
+        <div class="field"><div class="lbl">Shipping · Rest of world</div><div class="in">7–14 business days</div></div>
+      </div>
+      <div class="field"><div class="lbl">Returns &amp; refunds</div><div class="in" style="height:70px">Returns accepted within 14 days. Broken items: send a photo and I'll replace or refund.</div></div>
+      <div class="grid2"><div class="field"><div class="lbl">Custom orders</div><div class="in">Yes</div></div><div class="field"><div class="lbl">Default tone</div><div class="in">Friendly</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 4: Templates -->
+<div class="shot" id="s4">
+  <div class="cap">
+    <div class="logo"><img src="logo.svg" alt="">Babelbee</div>
+    <h1>Templates for everyday questions.</h1>
+    <p>Ready for the messages you get most. Edit them or create your own.</p>
+  </div>
+  <div class="browser">
+    <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">Babelbee · Templates</span></div>
+    <div class="opts">
+      <h2>Reply templates</h2><div class="sub">Pick one in the side panel to steer the reply.</div>
+      <div class="tpl"><div>📦 Where is my order?<small>Share tracking and expected delivery</small></div><span class="ed">Edit</span></div>
+      <div class="tpl"><div>⏳ Shipping delay<small>Apologise, give a new date, offer options</small></div><span class="ed">Edit</span></div>
+      <div class="tpl"><div>✂️ Custom order request<small>Ask for details, price and timing</small></div><span class="ed">Edit</span></div>
+      <div class="tpl"><div>↩️ Return or refund<small>Follow your return policy</small></div><span class="ed">Edit</span></div>
+      <div class="tpl"><div>💔 Item arrived damaged<small>Ask for a photo, replace or refund</small></div><span class="ed">Edit</span></div>
+      <div class="tpl"><div>💬 Price offer<small>Accept, counter or decline politely</small></div><span class="ed">Edit</span></div>
+      <div class="tpl"><div>⭐ Thank you + review request<small>Warm thanks after delivery</small></div><span class="ed">Edit</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 5: Trust -->
+<div class="shot" id="s5">
+  <div class="cap">
+    <div class="logo"><img src="logo.svg" alt="">Babelbee</div>
+    <h1>Private. No API key. No bots.</h1>
+    <p>Built to be safe for you and your shop.</p>
+  </div>
+  <div class="feat">
+    <div class="f"><div class="ic">🔑</div><h3>No API key</h3><p>Uses the AI built into your browser. No accounts, no usage bills.</p></div>
+    <div class="f"><div class="ic">🔒</div><h3>Stays in your browser</h3><p>No servers, no tracking, no data selling.</p></div>
+    <div class="f"><div class="ic">🛡️</div><h3>You press send</h3><p>No auto-sending, no clicking, no automation.</p></div>
+    <div class="f"><div class="ic">🌍</div><h3>Every language</h3><p>Translation plus back-translation, so you always know what you send.</p></div>
+  </div>
+</div>
+
+<script>
+  const n = new URLSearchParams(location.search).get("s") || "1";
+  document.getElementById("s" + n).classList.add("on");
+</script>
+</body>
+</html>
