@@ -1,8 +1,8 @@
 # Prompts para o CTO.new (T0 → T9)
 
 Como usar:
-1. Carregar primeiro todos os ficheiros do projeto no repositório `babelbee` (o agente precisa do `README.md`, `TICKETS.md` e da pasta `brand/`).
-2. No CTO.new, selecionar o repositório `babelbee` e colar **um** prompt de cada vez (o bloco cinzento inteiro).
+1. Carregar primeiro todos os ficheiros do projeto no repositório `babel` (o agente precisa do `README.md`, `TICKETS.md` e da pasta `brand/`).
+2. No CTO.new, selecionar o repositório `babel` e colar **um** prompt de cada vez (o bloco cinzento inteiro).
 3. Esperar pelo PR, rever com a `CHECKLIST_REVISAO_PR.md` (ou trazer-mo), fazer merge, e só depois enviar o seguinte.
 4. Antes do T6, preencher no prompt os dados da Polar (Organization ID e links de checkout), ver `SETUP_GRATIS.md` passo 7.
 
@@ -11,7 +11,7 @@ Como usar:
 ## T0: Project scaffold
 
 ```
-Repository: babelbee. Read README.md and TICKETS.md first for full context.
+Repository: Malakipt123/babel. Read README.md and TICKETS.md first for full context.
 
 GLOBAL CONSTRAINTS (apply to every task):
 - Chrome extension, Manifest V3, TypeScript, Vite. No backend server. Zero running costs.
@@ -45,7 +45,7 @@ Only do T0. Keep changes limited to this task. Open a pull request when done, wi
 ## T1: Context menu + side panel flow
 
 ```
-Repository: babelbee. Read README.md and TICKETS.md first for full context.
+Repository: Malakipt123/babel. Read README.md and TICKETS.md first for full context.
 
 Tasks T0 to T0 are already merged. Build on the existing code; do not redo earlier work.
 
@@ -79,7 +79,7 @@ Only do T1. Keep changes limited to this task. Open a pull request when done, wi
 ## T2: AI providers (Chrome built-in AI + BYOK Gemini)
 
 ```
-Repository: babelbee. Read README.md and TICKETS.md first for full context.
+Repository: Malakipt123/babel. Read README.md and TICKETS.md first for full context.
 
 Tasks T0 to T1 are already merged. Build on the existing code; do not redo earlier work.
 
@@ -116,7 +116,7 @@ Only do T2. Keep changes limited to this task. Open a pull request when done, wi
 ## T3: Shop profile settings
 
 ```
-Repository: babelbee. Read README.md and TICKETS.md first for full context.
+Repository: Malakipt123/babel. Read README.md and TICKETS.md first for full context.
 
 Tasks T0 to T2 are already merged. Build on the existing code; do not redo earlier work.
 
@@ -148,7 +148,7 @@ Only do T3. Keep changes limited to this task. Open a pull request when done, wi
 ## T4: Reply templates library
 
 ```
-Repository: babelbee. Read README.md and TICKETS.md first for full context.
+Repository: Malakipt123/babel. Read README.md and TICKETS.md first for full context.
 
 Tasks T0 to T3 are already merged. Build on the existing code; do not redo earlier work.
 
@@ -181,7 +181,7 @@ Only do T4. Keep changes limited to this task. Open a pull request when done, wi
 ## T5: Marketplace message page integration (enhancement)
 
 ```
-Repository: babelbee. Read README.md and TICKETS.md first for full context.
+Repository: Malakipt123/babel. Read README.md and TICKETS.md first for full context.
 
 Tasks T0 to T4 are already merged. Build on the existing code; do not redo earlier work.
 
@@ -214,7 +214,7 @@ Only do T5. Keep changes limited to this task. Open a pull request when done, wi
 ## T6: Freemium limits + Pro license (Polar.sh)
 
 ```
-Repository: babelbee. Read README.md and TICKETS.md first for full context.
+Repository: Malakipt123/babel. Read README.md and TICKETS.md first for full context.
 
 Tasks T0 to T5 are already merged. Build on the existing code; do not redo earlier work.
 
@@ -254,7 +254,7 @@ Only do T6. Keep changes limited to this task. Open a pull request when done, wi
 ## T7: Onboarding + privacy policy
 
 ```
-Repository: babelbee. Read README.md and TICKETS.md first for full context.
+Repository: Malakipt123/babel. Read README.md and TICKETS.md first for full context.
 
 Tasks T0 to T6 are already merged. Build on the existing code; do not redo earlier work.
 
@@ -286,7 +286,7 @@ Only do T7. Keep changes limited to this task. Open a pull request when done, wi
 ## T8: Landing page + store listing assets
 
 ```
-Repository: babelbee. Read README.md and TICKETS.md first for full context.
+Repository: Malakipt123/babel. Read README.md and TICKETS.md first for full context.
 
 Tasks T0 to T7 are already merged. Build on the existing code; do not redo earlier work.
 
@@ -322,7 +322,7 @@ Only do T8. Keep changes limited to this task. Open a pull request when done, wi
 ## T9: Operations handbook (for the future buyer)
 
 ```
-Repository: babelbee. Read README.md and TICKETS.md first for full context.
+Repository: Malakipt123/babel. Read README.md and TICKETS.md first for full context.
 
 Tasks T0 to T8 are already merged. Build on the existing code; do not redo earlier work.
 

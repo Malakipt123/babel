@@ -41,7 +41,7 @@ Os 5 $ pagam-se com a **primeira pré-venda** (lifetime 49 $). Custo do nosso bo
 
 ## Como usar com o CTO.new
 
-1. Criar repositório **privado** novo no GitHub: `babelbee`.
+1. Repositório GitHub: `Malakipt123/babel` (público por agora; passar a privado antes das vendas).
 2. Colocar lá este `README.md` e o `TICKETS.md`.
 3. Ligar o repositório ao CTO.new.
 4. Enviar **um ticket de cada vez, por ordem** (T0 → T9). Copiar o bloco inteiro do ticket.
