@@ -1,5 +1,7 @@
 # Prompts para o CTO.new (T0 → T9)
 
+> **T0 já está feito** (base da extensão, CI e ícones). Depois de este código estar no `main`, **começar pelo prompt T1**.
+
 Como usar:
 1. Carregar primeiro todos os ficheiros do projeto no repositório `babel` (o agente precisa do `README.md`, `TICKETS.md` e da pasta `brand/`).
 2. No CTO.new, selecionar o repositório `babel` e colar **um** prompt de cada vez (o bloco cinzento inteiro).

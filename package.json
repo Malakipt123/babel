@@ -1,0 +1,27 @@
+{
+  "name": "babelbee",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Multilingual reply copilot for marketplace sellers (browser extension)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch --mode development",
+    "build": "tsc --noEmit && vite build",
+    "lint": "eslint . && prettier --check \"src/**/*.{ts,html,css}\" \"*.{ts,js,json}\"",
+    "format": "prettier --write \"src/**/*.{ts,html,css}\" \"*.{ts,js,json}\"",
+    "test": "vitest run",
+    "package": "npm run build && node scripts/package.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/chrome": "^0.3.7",
+    "@types/node": "^26.6.6",
+    "eslint": "^10.15.0",
+    "globals": "^17.14.0",
+    "prettier": "^3.10.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
+  }
+}

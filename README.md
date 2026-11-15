@@ -60,3 +60,27 @@ Os 5 $ pagam-se com a **primeira pré-venda** (lifetime 49 $). Custo do nosso bo
 - **Free:** 15 respostas/mês, 3 modelos
 - **Pro:** 9 $/mês ou 79 $/ano — respostas ilimitadas, modelos ilimitados, várias lojas
 - **Lifetime de lançamento:** 49 $ (só os primeiros 50 — dá caixa inicial e testemunhos)
+
+## Development
+
+Requires Node.js 22+.
+
+| Command | What it does |
+|---|---|
+| `npm install` | Install dependencies |
+| `npm run build` | Type-check and build the extension into `dist/` |
+| `npm run dev` | Rebuild `dist/` on every change |
+| `npm run lint` | ESLint + Prettier check |
+| `npm run format` | Format the code with Prettier |
+| `npm test` | Unit tests (Vitest) |
+| `npm run package` | Build and zip `dist/` into `release/babelbee-<version>.zip` for the stores |
+
+Load the extension: `chrome://extensions` (or `edge://extensions`) → enable **Developer mode** →
+**Load unpacked** → choose the `dist/` folder. Clicking the toolbar icon opens the side panel.
+
+Layout: `src/background/` (service worker), `src/sidepanel/`, `src/options/`, `src/content/`
+(marketplace pages, T5), `src/lib/` (shared, unit-tested code), `public/manifest.json`.
+Icons come from `brand/` and are copied into `dist/icons/` by the build.
+
+CI (`.github/workflows/ci.yml`) runs lint, tests and build on every pull request and uploads
+`dist/` as an artifact. `.github/workflows/pages.yml` publishes `site/` to GitHub Pages.

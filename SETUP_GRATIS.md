@@ -8,7 +8,8 @@ Ordem recomendada. Tudo grátis; nenhum passo pede cartão de crédito
 1. **Email do projeto** — criar Gmail novo, ex.: `babelbee.hello@gmail.com` (se estiver ocupado, escolher outro e alterar `CONTACT_EMAIL` em `site/index.html` e o email em `site/privacy.html`).
 2. **Formulário da lista de espera** — tally.so → criar conta com o email do projeto → novo formulário com os 5 campos de `LANDING.md` (secção 10) → Publicar → copiar o link `https://tally.so/r/...`.
 3. **Colar o link** em `site/index.html`, na linha `const WAITLIST_URL = "https://tally.so/r/REPLACE_ME";`.
-4. **Publicar a landing** — pages.cloudflare.com → criar conta → *Workers & Pages* → *Create* → *Pages* → ligar ao GitHub → escolher `babel` → *Build command*: vazio · *Build output directory*: `site` → Deploy.
+4. **Publicar a landing (opção mais simples, enquanto o repositório for público):** GitHub → repositório `babel` → *Settings* → *Pages* → *Source*: **GitHub Actions**. A landing fica em `https://malakipt123.github.io/babel/` e atualiza sozinha a cada alteração em `site/`.
+   **Alternativa (funciona também com repositório privado):** Cloudflare Pages: pages.cloudflare.com → criar conta → *Workers & Pages* → *Create* → *Pages* → ligar ao GitHub → escolher `babel` → *Build command*: vazio · *Build output directory*: `site` → Deploy.
    Fica em `https://babelbee.pages.dev` (ou parecido, se o nome estiver ocupado).
 5. **Começar as publicações** de `LAUNCH_POSTS.md` — uma comunidade por dia.
 
